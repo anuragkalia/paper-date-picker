@@ -34,9 +34,9 @@
 </head>
 <body unresolved>
   <template is="dom-bind" id="scope">
-    <h3>{{dateFormat(date, 'LLL')}}</h3>
+    <h3>{{date}}</h3>
     <section>
-      <div id="container" on-track="track">
+      <div id="container">
         <paper-calendar id="picker" date="{{date}}"></paper-calendar>
       </div>
     </section>
@@ -44,16 +44,7 @@
   <script>
     HTMLImports.whenReady(function() {
       var scope = Polymer.dom(document).querySelector('#scope');
-      scope.dateFormat = function(date, format) {
-        if (!date) {
-          return 'No date selected';
-        }
-        return moment(date).format(format);
-      };
       scope.date = new Date(2017, 3, 13);
-      scope.track = function() {
-        this.$.picker.fire('iron-resize');
-      };
     });
   </script>
 </body>
